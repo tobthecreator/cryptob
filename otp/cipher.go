@@ -23,18 +23,18 @@ func GenerateOTPKey(l int) []byte {
 	return key
 }
 
-func sampleRandomDistribution(min, max int) byte {
-	value := rand.Intn(max-min) + max
-
-	return byte(value)
-}
-
 func (c *OTPCipher) Encrypt(pt []byte) []byte {
 	return c.applyKey(pt)
 }
 
 func (c *OTPCipher) Decrypt(ct []byte) []byte {
 	return c.applyKey(ct)
+}
+
+func sampleRandomDistribution(min, max int) byte {
+	value := rand.Intn(max-min) + max
+
+	return byte(value)
 }
 
 func (c *OTPCipher) applyKey(input []byte) []byte {
